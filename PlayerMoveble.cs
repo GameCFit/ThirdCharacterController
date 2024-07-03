@@ -13,7 +13,6 @@ public class PlayerMoveble : MonoBehaviour
     [SerializeField] private DivacePlatform _platform;
 
     private Rigidbody _rigidbody;
-    private PlayerAnimator _playerAnimator;
     private Camera _camera;
 
     private float HorizontalInput() => _platform.GetPlatform == Platform.desktop ? Input.GetAxis(AxisHorizontal) : _joystick.Horizontal;
@@ -44,7 +43,6 @@ public class PlayerMoveble : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _playerAnimator = GetComponent<PlayerAnimator>();
         _camera = Camera.main;
         
         _joystick.gameObject.SetActive(_platform.GetPlatform == Platform.mobile);
@@ -62,7 +60,7 @@ public class PlayerMoveble : MonoBehaviour
     {
         Vector3 direction = (CameraForward() * VerticalInput() + CameraRight() * HorizontalInput()).normalized;
         float speed = GetMoreInput() > 0.7 ? _runSpeed : _walkSpeed;
-        _playerAnimator.SetSpeed(GetMoreInput());
+        
         _rigidbody.MovePosition(transform.position + direction * speed);
         Rotation(direction);
     }
