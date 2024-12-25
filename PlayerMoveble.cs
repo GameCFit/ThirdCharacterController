@@ -10,7 +10,7 @@ public class PlayerMoveble : MonoBehaviour
     [SerializeField] private float _runSpeed;
 
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private DivacePlatform _platform;
+    [SerializeField] private DevicePlatform _platform;
 
     private Rigidbody _rigidbody;
     private Camera _camera;
